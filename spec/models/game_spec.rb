@@ -36,4 +36,30 @@ RSpec.describe Game, type: :model do
 #     expect(game2.errors.added?(:name, :taken)).to be_truthy
     end
   end
+
+  describe "#next_position" do
+    context "with a game with no words" do
+      let(:game) { create(:game) }
+
+      it "should return 0" do
+        expect(game.next_position).to be == 0
+      end
+    end
+
+    context "with a game with some words" do
+      let(:game) { create(:game, game_words: build_list(:game_word, 3)) }
+
+      it "should return the next position" do
+        expect(game.next_position).to be == 3
+      end
+    end
+
+    context "with a game with all words" do
+      let(:game) { create(:game, game_words: build_list(:game_word, Game::N_WORDS)) }
+
+      it "should return nil" do
+        expect(game.next_position).to be == nil
+      end
+    end
+  end
 end

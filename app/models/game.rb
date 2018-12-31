@@ -12,7 +12,7 @@ class Game < ApplicationRecord
   end
 
   def has_words?
-    self.game_words.count > 0
+    self.game_words.count == Game::N_WORDS
   end
 
   def has_whos?
@@ -25,5 +25,9 @@ class Game < ApplicationRecord
 
   def word_at_pos(x, y)
     word_at(y * Game::WIDTH + x)
+  end
+
+  def next_position
+    has_words? ? nil : self.game_words.count
   end
 end
