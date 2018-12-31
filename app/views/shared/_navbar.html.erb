@@ -4,17 +4,8 @@
 	</a>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<% if @game && @game.persisted? %>
-				<li class="nav-item active">
-					<a class="nav-link" href="<%= game_path(@game) %>">
-						<%= @game.name %>
-						<span class="sr-only">(current)</span>
-					</a>
-				</li>
-			<% end %>
-			<li class="nav-item <%= (@game && @game.new_record?) ? 'active' : '' %>">
-				<%= link_to "#{t(:new).capitalize} #{Game.model_name.human}", new_game_path, method: :get, class: 'nav-link' %>
-			</li>
+			<%= render partial: 'shared/navbar_game' if nav_show_game %>
+			<%= render partial: 'shared/navbar_new' %>
 		</ul>
 	</div>
 </nav>
