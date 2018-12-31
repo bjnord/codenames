@@ -1,2 +1,6 @@
-$("#grid-cell-<%= @game_word.position %>").replaceWith("<%= j render partial: 'grid_cell', locals: { game_word: @game_word } %>");
-$("#next-word").val("").focus();
+<% if @game.has_words? %>
+	window.location.replace("<%= game_url(@game); %>");
+<% else %>
+	$("#grid-cell-<%= @game_word.position %>").replaceWith("<%= j render partial: 'grid_cell', locals: { game_word: @game_word } %>");
+	$("#next-word").val("").focus();
+<% end %>

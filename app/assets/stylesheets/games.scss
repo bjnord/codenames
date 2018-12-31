@@ -23,6 +23,19 @@
 	}
 }
 
+#setup-whos {
+	position: relative;
+	height: 20px;
+
+	.title {
+		position: absolute;
+		top: -10px;
+		border-radius: 6px;
+		background-color: #ccc;
+		padding: 0 6px;
+	}
+}
+
 .game-grid {
 	border: 1px dotted #eee;
 	display: flex;
@@ -38,6 +51,7 @@
 		padding: 0;
 
 		.cell {
+			position: relative;
 			border: 1px dotted #eee;
 			min-height: 13%;
 			min-height: 13vh;
@@ -49,7 +63,43 @@
 			margin: 0;
 			padding: 0;
 			font-size: 120%;
+
+			.color-setters {
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 10;
+
+				.setter {
+					position: absolute;
+					width: 20%;
+					height: 30%;
+					cursor: pointer;
+
+					&.red {
+						top: 12.5%;
+						left: 10%;
+					}
+					&.blue {
+						top: 12.5%;
+						right: 10%;
+					}
+					&.bystander {
+						bottom: 12.5%;
+						left: 10%;
+					}
+					&.assassin {
+						bottom: 12.5%;
+						right: 10%;
+					}
+				}
+			}
 		}
+	}
+	.nil {
+		background-color: white;
+		color: black;
 	}
 	.red {
 		background-color: red;
@@ -59,16 +109,12 @@
 		background-color: blue;
 		color: white;
 	}
-	.black {
+	.bystander {
+		background-color: #D0D0C1;
+		color: black;
+	}
+	.assassin {
 		background-color: black;
 		color: white;
-	}
-	.neutral {
-		background-color: beige;
-		color: black;
-	}
-	.nil {
-		background-color: white;
-		color: black;
 	}
 }

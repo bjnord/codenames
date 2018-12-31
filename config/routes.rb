@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :games, only: [:index, :show, :new, :create] do
     member do
       post 'set_word', to: 'games#set_word', as: 'set_word'
+      post 'set_who', to: 'games#set_who', as: 'set_who'
     end
   end
 end

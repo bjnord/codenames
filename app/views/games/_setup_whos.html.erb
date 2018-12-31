@@ -1,1 +1,28 @@
-<%= render partial: 'game_grid' %>
+<div id="setup-whos">
+	<div class="title">Set the colors for each square:</div>
+</div>
+<%= render partial: 'game_grid', locals: { color_setters: true } %>
+<script>
+  $(document).ready(function () {
+    set_color_setter_handlers();
+  });
+
+  function set_color_setter_handlers()
+  {
+    $(".setter").off('click').click(function (event) {
+      var who = $(this).attr("data-who");
+      var position = $(this).closest(".cell").attr("data-cell-id");
+      $.ajax({
+        method: "POST",
+        url: "<%= set_who_game_url(@game, format: :js) %>",
+        data: { position: position, who: who }
+      })
+      .done(function (data) {
+        eval(data);
+      })
+      .fail(function (data) {
+        alert("Error setting color: " + data);
+      });
+    });
+  }
+</script>

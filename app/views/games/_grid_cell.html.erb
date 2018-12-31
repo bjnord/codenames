@@ -1,3 +1,11 @@
 <div id="grid-cell-<%= game_word.position %>" class="cell <%= game_word.who %>" data-cell-id="<%= game_word.position %>">
+	<% if defined?(color_setters) && color_setters %>
+		<div class="color-setters">
+			<div class="setter blue" data-who="blue">&nbsp;</div>
+			<div class="setter red" data-who="red">&nbsp;</div>
+			<div class="setter bystander" data-who="bystander">&nbsp;</div>
+			<div class="setter assassin" data-who="assassin">&nbsp;</div>
+		</div>
+	<% end %>
 	<%= game_word.word %>
 </div>

@@ -18,7 +18,9 @@
       [data, status, xhr] = event.detail;
       eval(data);
     }).on("ajax:error", function (event) {
-      alert("Error adding word...");  // TODO Bootstrap modal
+      var data, status, xhr;
+      [data, status, xhr] = event.detail;
+      alert("Error adding word: " + data);
     });
   });
 </script>
