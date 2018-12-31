@@ -6,6 +6,15 @@ RSpec.describe Game, type: :model do
     expect(subject).to be_valid
   end
 
+  context "without a sessionid" do
+    let(:game) { build(:game, sessionid: nil) }
+
+    it "should not be valid" do
+      expect(game).not_to be_valid
+      expect(game.errors.added?(:sessionid, :blank)).to be_truthy
+    end
+  end
+
   context "without a name" do
     let(:game) { build(:game, name: nil) }
 
