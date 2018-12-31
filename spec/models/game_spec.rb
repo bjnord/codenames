@@ -22,7 +22,8 @@ RSpec.describe Game, type: :model do
     it "should not be valid" do
       expect(game2).not_to be_valid
 # FIXME not working for some reason
-#     $stderr.puts game2.errors.inspect
+#       - see <https://github.com/rails/rails/issues/33023>
+#       - and <https://github.com/rails/rails/pull/31117>
 #     expect(game2.errors.added?(:name, :taken)).to be_truthy
     end
   end

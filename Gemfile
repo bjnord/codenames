@@ -41,6 +41,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'guard-livereload'
   gem 'spring-commands-rspec'
+  gem 'faker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
