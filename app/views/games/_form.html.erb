@@ -2,6 +2,7 @@
 	<div id="new-game-card" class="card card-default">
 		<div class="card-body">
 			<h4 class="card-title">Create a new game</h4>
+			<%= render 'form_errors', game: @game %>
 			<div class="form-group">
 				<%# <label for="game_name"></label> %>
 				<%= f.label :name %>

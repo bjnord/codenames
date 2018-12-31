@@ -1,0 +1,10 @@
+<% if game.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= t(:create_error, errors: pluralize(game.errors.count, t(:error)), model: Game.model_name.human.downcase) %></h2>
+		<ul>
+			<% game.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

@@ -31,5 +31,7 @@
 
 en:
   app_name: "Codenames"
-  new: "new"
+  create_error: "%{errors} prohibited this %{model} from being created"
   enter: "enter"
+  error: "error"
+  new: "new"
