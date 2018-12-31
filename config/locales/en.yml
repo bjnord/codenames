@@ -34,4 +34,5 @@ en:
   create_error: "%{errors} prohibited this %{model} from being created"
   enter: "enter"
   error: "error"
+  game_name_help: "You'll choose this name on the big-screen display."
   new: "new"

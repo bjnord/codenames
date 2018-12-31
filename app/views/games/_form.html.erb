@@ -4,12 +4,10 @@
 			<h4 class="card-title">Create a new game</h4>
 			<%= render 'form_errors', game: @game %>
 			<div class="form-group">
-				<%# <label for="game_name"></label> %>
 				<%= f.label :name %>
-				<%# <input type="email" class="form-control" id="game_name" aria-describedby="emailHelp" placeholder="Enter email"> %>
-				<%# FIXME how to add the aria-describedby? %>
-				<%= f.text_field :name, size: 20, class: 'form-control', placeholder: "#{t(:enter).capitalize} #{Game.human_attribute_name(:name)}" %>
-				<small id="game_name_help" class="form-text text-muted">You'll choose this name on the big-screen display.</small>
+				<%# FIXME how to add aria-describedby="game_name_help" ? %>
+				<%= f.text_field :name, size: 20, class: 'form-control', placeholder: "#{t(:enter).capitalize} #{Game.human_attribute_name(:name)}", autofocus: true %>
+				<small id="game_name_help" class="form-text text-muted"><%= t(:game_name_help) %></small>
 			</div>
 			<div class="form-group">
 				<%= f.submit class: 'btn btn-success' %>
