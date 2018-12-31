@@ -34,6 +34,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'responders'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8.1'

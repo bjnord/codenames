@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  respond_to :html
+
   def index
     @games = Game.where('created_at > ?', Time.now - 2.days).order(created_at: :desc)
   end
@@ -12,11 +14,8 @@ class GamesController < ApplicationController
   end
 
   def create
-    if @game = Game.create(strong_params.merge(sessionid: session.id))
-      redirect_to game_path(@game)
-    else
-      render :new
-    end
+    @game = Game.create(strong_params.merge(sessionid: session.id))
+    respond_with @game
   end
 
 private
