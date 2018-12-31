@@ -10,4 +10,16 @@ class Game < ApplicationRecord
   def spymaster?(session)
     self.sessionid == session.id
   end
+
+  def has_words?
+    self.game_words.count > 0
+  end
+
+  def has_whos?
+    self.game_words.select{|gw| gw.who != 'nil' }.count == Game::N_WORDS
+  end
+
+  def cell(x, y)
+    self.game_words[y * Game::WIDTH + x]
+  end
 end

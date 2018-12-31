@@ -1,5 +1,15 @@
 <% if !@game.spymaster?(session) %>
-	<%= render partial: 'please_wait' %>
+	<% if @game.has_words? %>
+		<%= render partial: 'view_game' %>
+	<% else %>
+		<%= render partial: 'please_wait' %>
+	<% end %>
 <% else %>
-	The grid...
+	<% if !@game.has_words? %>
+		<%= render partial: 'setup_words' %>
+	<% elsif !@game.has_whos? %>
+		<%= render partial: 'setup_whos' %>
+	<% else %>
+		<%= render partial: 'manage_game' %>
+	<% end %>
 <% end %>
