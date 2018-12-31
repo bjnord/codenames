@@ -1,0 +1,5 @@
+<h1><%= "#{t(:new).titleize} #{Game.model_name.human}" %></h1>
+<%= form_with model: @game do |f| %>
+	<%= f.text_field :name, size: 20 %>
+	<%= f.submit %>
+<% end %>
