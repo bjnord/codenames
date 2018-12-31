@@ -1,4 +1,4 @@
-<div id="grid-cell-<%= game_word.position %>" class="cell <%= game_word.who %>" data-cell-id="<%= game_word.position %>">
+<div id="grid-cell-<%= game_word.position %>" class="cell <%= protected_who(game_word, session) %>" data-cell-id="<%= game_word.position %>">
 	<% if defined?(color_setters) && color_setters %>
 		<div class="color-setters">
 			<div class="setter blue" data-who="blue">&nbsp;</div>
