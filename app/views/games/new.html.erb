@@ -1,18 +1,1 @@
-<%= form_with model: @game do |f| %>
-	<div id="new-game-card" class="card card-default">
-		<div class="card-body">
-			<h4 class="card-title">Create a new game</h4>
-			<div class="form-group">
-				<%# <label for="game_name"></label> %>
-				<%= f.label :name %>
-				<%# <input type="email" class="form-control" id="game_name" aria-describedby="emailHelp" placeholder="Enter email"> %>
-				<%# FIXME how to add the aria-describedby? %>
-				<%= f.text_field :name, size: 20, class: 'form-control', placeholder: "#{t(:enter).capitalize} #{Game.human_attribute_name(:name)}" %>
-				<small id="game_name_help" class="form-text text-muted">You'll choose this name on the big-screen display.</small>
-			</div>
-			<div class="form-group">
-				<%= f.submit class: 'btn btn-success' %>
-			</div>
-		</div>
-	</div>
-<% end %>
+<%= render 'form' %>
