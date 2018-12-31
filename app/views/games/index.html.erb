@@ -1,5 +1,5 @@
-<h1><%= Game.model_name.human.pluralize %></h1>
-<ul>
-	<%= render partial: 'game_item', collection: @games, as: :game %>
-</ul>
-<%= link_to "#{t(:new).titleize} #{Game.model_name.human}", new_game_path, method: :get %>
+<div id="game-list">
+	<ul class="list-group">
+		<%= render partial: 'game_item', collection: @games, as: :game %>
+	</ul>
+</div>
