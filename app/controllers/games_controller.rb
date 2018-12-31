@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token, if: -> { request.format.js? && !Rails.env.production? }
   before_action :set_game, only: [:show, :set_word]
+  before_action :authorize_update, only: [:set_word]
   respond_to :html, :js
 
   def index
@@ -20,9 +21,7 @@ class GamesController < ApplicationController
   end
 
   def set_word
-    if !@game.spymaster?(session) && Rails.env.production?
-      render status: :unauthorized, js: 'Unauthorized', content_type: 'text/plain' and return
-    elsif !(pos = params[:position] || @game.next_position)
+    if !(pos = params[:position] || @game.next_position)
       # need to provide params[:position] in this case
       render status: :unprocessable_entity, js: 'All words entered', content_type: 'text/plain' and return
     end
@@ -44,5 +43,14 @@ private
 
   def set_game
     @game = Game.includes(:game_words).find(params[:id])
+  end
+
+  def authorize_update
+    if !@game.spymaster?(session)
+      respond_to do |format|
+        format.html { redirect_to game_url(@game), alert: t(:only_spymaster_can_update) }
+        format.js   { render status: :unauthorized, js: t(:only_spymaster_can_update), content_type: 'text/plain' and return }
+      end
+    end
   end
 end
