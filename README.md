@@ -12,7 +12,7 @@ This app is a mobile web app; nothing needs to be installed on your phone/handhe
 
 ## Credits
 
-Thanks to my nephew Mark and son Doug for the inspiration they provided by demonstrating this concept using a shared/live Google Sheets spreadsheet.
+Thanks to my nephew Mark for the idea of using the TV, and to my son Doug for demonstrating this concept using a shared/live Google Sheets spreadsheet, inspiring me to write this app.
 
 ## Copyright
 
