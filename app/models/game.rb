@@ -19,7 +19,11 @@ class Game < ApplicationRecord
     self.game_words.select{|gw| gw.who != 'nil' }.count == Game::N_WORDS
   end
 
-  def cell(x, y)
-    self.game_words[y * Game::WIDTH + x]
+  def word_at(pos)
+    self.game_words.select{|gw| gw.position == pos }.first
+  end
+
+  def word_at_pos(x, y)
+    word_at(y * Game::WIDTH + x)
   end
 end

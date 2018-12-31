@@ -2,7 +2,7 @@
 	<% Game::WIDTH.times do |x| %>
 		<div class="col">
 			<% Game::WIDTH.times do |y| %>
-				<%= render partial: 'grid_cell', locals: {x: x, y: y} %>
+				<%= render partial: 'grid_cell', locals: { game_word: @game.word_at_pos(x, y) } %>
 			<% end %>
 		</div>
 	<% end %>
