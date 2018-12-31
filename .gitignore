@@ -29,3 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore this until we clear rights.
+app/assets/images/spy.gif

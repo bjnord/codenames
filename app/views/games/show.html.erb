@@ -1,2 +1,5 @@
-<%# TODO %>
-<p><%= @game.name %>…</p>
+<% if !@game.spymaster?(session) %>
+	<%= render partial: 'please_wait' %>
+<% else %>
+	The grid...
+<% end %>
