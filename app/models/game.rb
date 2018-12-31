@@ -20,7 +20,7 @@ class Game < ApplicationRecord
   end
 
   def word_at(pos)
-    self.game_words.select{|gw| gw.position == pos }.first
+    self.game_words.select{|gw| gw.position == pos }.first || self.game_words.build(position: pos)
   end
 
   def word_at_pos(x, y)

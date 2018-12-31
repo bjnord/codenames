@@ -26,7 +26,7 @@ class GamesController < ApplicationController
       # need to provide params[:position] in this case
       render status: :unprocessable_entity, js: 'All words entered', content_type: 'text/plain' and return
     end
-    @game_word = @game.word_at(pos.to_i) || @game.game_words.new
+    @game_word = @game.word_at(pos.to_i)
     @game_word.position = pos
     @game_word.word = params[:word]
     if @game_word.save
