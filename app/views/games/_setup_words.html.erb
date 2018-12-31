@@ -1,1 +1,24 @@
+<div id="setup-words">
+	<div class="title">Enter the words for this game:</div>
+	<%= form_with url: set_word_game_path(@game, format: :js), remote: true, html: { autocomplete: 'off' } do |f| %>
+		<div class="form-group">
+			<label for="word"></label>
+			<input id="next-word" name="word" type="text" class="form-control" placeholder="Enter next word" autofocus="autofocus" />
+		</div>
+		<noscript>
+			<%= f.submit id: 'next-word-submit', class: 'btn btn-success' %>
+		</noscript>
+	<% end %>
+</div>
 <%= render partial: 'game_grid' %>
+<script>
+  $(document).ready(function () {
+    return $("#setup-words form").on("ajax:success", function (event) {
+      var data, status, xhr;
+      [data, status, xhr] = event.detail;
+      eval(data);
+    }).on("ajax:error", function (event) {
+      alert("Error adding word...");  // TODO Bootstrap modal
+    });
+  });
+</script>

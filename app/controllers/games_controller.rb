@@ -29,9 +29,15 @@ class GamesController < ApplicationController
     @game_word.position = pos
     @game_word.word = params[:word]
     if @game_word.save
-      render 'set_word'
+      respond_to do |format|
+        format.html { render :show }  # TODO
+        format.js   { render :set_word }
+      end
     else
-      render status: :unprocessable_entity, js: @game_word.errors.full_messages.to_sentence, content_type: 'text/plain'
+      respond_to do |format|
+        format.html { render :show }  # TODO
+        format.js   { render status: :unprocessable_entity, js: @game_word.errors.full_messages.to_sentence, content_type: 'text/plain' }
+      end
     end
   end
 

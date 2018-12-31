@@ -36,3 +36,4 @@ en:
   error: "error"
   game_name_help: "You'll choose this name on the big-screen display."
   new: "new"
+  only_spymaster_can_update: "Only the spymaster can update the game"
