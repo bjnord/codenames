@@ -11,5 +11,12 @@ nav {
 		border-radius: 6px;
 		background-color: #ccc;
 		padding: 0 6px;
+
+		&.only-xs {
+			display: block;
+			@include media-breakpoint-up(sm) {
+				display: none;
+			}
+		}
 	}
 }
