@@ -27,7 +27,17 @@ gem 'jbuilder', '~> 2.5'
 # gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development do
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-nvm', require: false
+  gem 'capistrano3-puma'
+  # these are needed by net-ssh to support ed25519 keys:
+  gem 'rbnacl-libsodium'
+  gem 'rbnacl', '~> 4.0.2'  # must be < 5.0
+  gem 'ed25519', '~> 1.2.4'  # must be < 2.0
+  gem 'bcrypt_pbkdf', '~> 1.0.0'  # must be < 2.0
+end
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
