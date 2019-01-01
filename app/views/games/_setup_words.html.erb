@@ -22,7 +22,9 @@
       [data, status, xhr] = event.detail;
       $('#modal-error-title').html("Error adding word");
       $('#modal-error-text').html(data);
-      $('#modal-error').on('hidden.bs.modal', function (event) {
+      $('#modal-error').on('shown.bs.modal', function (event) {
+	$("#modal-error .modal-footer button").focus();
+      }).on('hidden.bs.modal', function (event) {
         $("#next-word").focus().select();
       }).modal();
     });

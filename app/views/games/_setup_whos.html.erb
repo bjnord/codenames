@@ -23,7 +23,9 @@
       .fail(function (xhr) {
         $('#modal-error-title').html("Error setting color");
         $('#modal-error-text').html(xhr.responseText);
-        $('#modal-error').modal();
+        $('#modal-error').on('shown.bs.modal', function (event) {
+          $("#modal-error .modal-footer button").focus();
+        }).modal();
       });
     });
   }

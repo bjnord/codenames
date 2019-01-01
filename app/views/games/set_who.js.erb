@@ -6,6 +6,8 @@
 	<% if error %>
 		$("#modal-error-title").html("Wrong colors");
 		$("#modal-error-text").html("<%= error %>");
-		$("#modal-error").modal();
+		$('#modal-error').on('shown.bs.modal', function (event) {
+			$("#modal-error .modal-footer button").focus();
+		}).modal();
 	<% end %>
 <% end %>
