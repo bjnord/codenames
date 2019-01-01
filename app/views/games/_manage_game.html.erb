@@ -12,7 +12,8 @@
     $(".cell").off('click');
     $(".cell.unrevealed").click(function (event) {
       var position = $(this).attr("data-cell-id");
-      $('#modal-confirm-text').html("Reveal this word to everyone?");
+      var word = $(this).text().toUpperCase();
+      $('#modal-confirm-text').html("Reveal " + word + " to everyone?");
       $('#modal-confirm-yes').off('click').click(function (event) {
         $('#modal-confirm').modal('hide');
         handle_reveal(position);
