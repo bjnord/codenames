@@ -31,9 +31,12 @@
 
 en:
   app_name: "Codenames"
+  blue_red_required: "Blue must have exactly one more or less than red"
+  bystanders_required: "There must be exactly %{count} bystanders (beige)"
   create_error: "%{errors} prohibited this %{model} from being created"
   enter: "enter"
   error: "error"
   game_name_help: "You'll choose this name on the big-screen display."
   new: "new"
+  one_assassin_required: "There must be exactly one assassin (black)"
   only_spymaster_can_update: "Only the spymaster can update the game"

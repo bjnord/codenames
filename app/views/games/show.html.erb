@@ -7,7 +7,7 @@
 <% else %>
 	<% if !@game.has_words? %>
 		<%= render partial: 'setup_words' %>
-	<% elsif !@game.has_whos? %>
+	<% elsif !@game.has_whos? || @game.who_error %>
 		<%= render partial: 'setup_whos' %>
 	<% else %>
 		<%= render partial: 'manage_game' %>

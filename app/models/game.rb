@@ -30,4 +30,18 @@ class Game < ApplicationRecord
   def next_position
     has_words? ? nil : self.game_words.count
   end
+
+  def who_error
+    tally = Hash.new(0)
+    self.game_words.collect{|gw| gw.who }.each{|who| tally[who] += 1 }
+    if tally['assassin'] != 1
+      I18n.t(:one_assassin_required)
+    elsif tally['bystander'] != 7
+      I18n.t(:bystanders_required, count: 7)
+    elsif (tally['red'] - tally['blue']).abs != 1
+      I18n.t(:blue_red_required)
+    else
+      nil
+    end
+  end
 end
