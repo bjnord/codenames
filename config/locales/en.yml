@@ -30,9 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  about: "about"
   app_name: "Codenames"
   blue_red_required: "Blue must have exactly one more or less than red"
   bystanders_required: "There must be exactly %{count} bystanders (beige)"
+  contact: "contact"
   create_error: "%{errors} prohibited this %{model} from being created"
   enter: "enter"
   error: "error"
