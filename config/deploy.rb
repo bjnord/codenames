@@ -91,7 +91,7 @@ set :migration_role, :app
 # NVM-specific options ("capistrano/nvm")
 ###
 
-set :nvm_node, 'v8.10.0'
+set :nvm_node, proc { 'v' + `cat .nvmrc`.chomp }
 
 # Default installation type (or change to :system)
 # set :nvm_type, :user
@@ -101,3 +101,11 @@ set :nvm_node, 'v8.10.0'
 
 # Default bins
 # set :nvm_map_bins, %w{node npm yarn}
+
+###
+# Puma-specific options ("capistrano/puma")
+###
+
+# We need this to get Node (FIXME doesn't seem to work)
+# set :puma_restart_command, 'bundle exec puma'
+set :puma_restart_command, 'nvm run bundle exec puma'

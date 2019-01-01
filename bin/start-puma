@@ -1,0 +1,17 @@
+#!/bin/sh
+# temporary, until we figure out how to get Capistrano to launch Puma with 'nvm run'
+if [ -z "$RUBY_VERSION" ]; then
+	RUBY_VERSION="`cat .ruby-version`"
+	if [ -z "$RUBY_VERSION" ]; then
+		RUBY_VERSION="ruby-2.5.3"  # fallback
+	fi
+fi
+RV="`echo $RUBY_VERSION | sed 's/ruby-//'`"
+if [ -z "$NODE_VERSION" ]; then
+	NODE_VERSION="`cat .nvmrc`"
+	if [ -z "$NODE_VERSION" ]; then
+		NODE_VERSION="8.10.0"  # fallback
+	fi
+	export NODE_VERSION
+fi
+/tmp/codenames/nvm-exec.sh ~/.rvm/bin/rvm $RV do bundle exec puma -C /home/cnames/codenames/shared/puma.rb --daemon
