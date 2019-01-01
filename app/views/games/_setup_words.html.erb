@@ -20,7 +20,11 @@
     }).on("ajax:error", function (event) {
       var data, status, xhr;
       [data, status, xhr] = event.detail;
-      alert("Error adding word: " + data);
+      $('#modal-error-title').html("Error adding word");
+      $('#modal-error-text').html(data);
+      $('#modal-error').on('hidden.bs.modal', function (event) {
+        $("#next-word").focus().select();
+      }).modal();
     });
   });
 </script>

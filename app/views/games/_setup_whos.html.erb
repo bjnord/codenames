@@ -20,8 +20,10 @@
       .done(function (data) {
         eval(data);
       })
-      .fail(function (data) {
-        alert("Error setting color: " + data);
+      .fail(function (xhr) {
+        $('#modal-error-title').html("Error setting color");
+        $('#modal-error-text').html(xhr.responseText);
+        $('#modal-error').modal();
       });
     });
   }
