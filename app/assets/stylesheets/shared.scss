@@ -1,6 +1,17 @@
 nav {
 	margin-bottom: 1em;
 }
+#codenames-nav {
+	@include media-breakpoint-up(sm) {
+		display: none;
+	}
+}
+#codenames-nav-sm {
+	display: none;
+	@include media-breakpoint-up(sm) {
+		display: flex;
+	}
+}
 
 #content {
 	position: relative;

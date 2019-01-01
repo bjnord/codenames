@@ -1,10 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<%# for larger sizes: %>
+<nav id="codenames-nav-sm" class="navbar navbar-expand-sm navbar-light bg-light">
 	<a class="navbar-brand" href="<%= root_path %>">
 		<%= t(:app_name) %>
 	</a>
+	<%= render partial: 'shared/navbar_game' if nav_show_game %>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<%= render partial: 'shared/navbar_game' if nav_show_game %>
+			<%= render partial: 'shared/navbar_new' %>
+		</ul>
+	</div>
+</nav>
+
+<%# hamburger, for phones: %>
+<nav id="codenames-nav" class="navbar navbar-light bg-light">
+	<a class="navbar-brand" href="<%= root_path %>">
+		<%= t(:app_name) %>
+	</a>
+	<%= render partial: 'shared/navbar_game' if nav_show_game %>
+	<button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="dark-blue-text"><%= fa_icon 'bars' %></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent1">
+		<ul class="navbar-nav mr-auto">
 			<%= render partial: 'shared/navbar_new' %>
 		</ul>
 	</div>
