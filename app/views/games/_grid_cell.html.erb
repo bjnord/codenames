@@ -7,7 +7,7 @@
 			<div class="setter assassin" data-who="assassin">&nbsp;</div>
 		</div>
 	<% else %>
-		<% if game_word.revealed? %>
+		<% if game_word.game.spymaster?(session) && game_word.revealed? %>
 			<div class="revealed-check"><%= fa_icon 'check' %></div>
 		<% end %>
 		<%= game_word.word %>

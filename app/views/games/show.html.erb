@@ -1,3 +1,7 @@
+<div style="display: none;">
+	<span id="get-word-url"><%= get_word_game_url(@game, format: :js) %></span>
+	<span id="game-channel"><%= @game.id %></span>
+</div>
 <% if !@game.spymaster?(session) %>
 	<% if @game.has_words? %>
 		<%= render partial: 'view_game' %>

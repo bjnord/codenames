@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token, if: -> { request.format.js? }
-  before_action :set_game, only: [:show, :set_word, :set_who, :reveal]
+  before_action :set_game, only: [:show, :get_word, :set_word, :set_who, :reveal]
   before_action :authorize_update, only: [:set_word, :set_who, :reveal]
   respond_to :html, :js
 
@@ -18,6 +18,17 @@ class GamesController < ApplicationController
   def create
     @game = Game.create(strong_params.merge(sessionid: session.id))
     respond_with @game
+  end
+
+  def get_word
+    if params[:game_word_id].blank?
+      render status: :unprocessable_entity, js: 'ID is required', content_type: 'text/plain' and return
+    end
+    @game_word = GameWord.find(params[:game_word_id].to_i)
+    respond_to do |format|
+      format.html { render :show }  # TODO
+      format.js   { render :get_word }
+    end
   end
 
   def set_word
@@ -67,6 +78,7 @@ class GamesController < ApplicationController
     end
     @game_word.revealed = true
     if @game_word.save
+      GameChannel.broadcast_to(@game, @game_word)
       respond_to do |format|
         format.html { render :show }  # TODO
         format.js   { render :reveal }
