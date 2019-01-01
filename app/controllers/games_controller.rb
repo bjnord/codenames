@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  skip_before_action :verify_authenticity_token, if: -> { request.format.js? && !Rails.env.production? }
+  skip_before_action :verify_authenticity_token, if: -> { request.format.js? }
   before_action :set_game, only: [:show, :set_word, :set_who]
   before_action :authorize_update, only: [:set_word, :set_who]
   respond_to :html, :js
