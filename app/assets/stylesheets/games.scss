@@ -73,25 +73,24 @@
 
 				.setter {
 					position: absolute;
+					top: 30%;
 					width: 20%;
-					height: 30%;
+					height: 40%;
+					border: 1px solid gray;
+					border-radius: 10%;
 					cursor: pointer;
 
 					&.red {
-						top: 12.5%;
-						left: 10%;
+						left: 4%;
 					}
 					&.blue {
-						top: 12.5%;
-						right: 10%;
+						left: 28%;
 					}
 					&.bystander {
-						bottom: 12.5%;
-						left: 10%;
+						left: 52%;
 					}
 					&.assassin {
-						bottom: 12.5%;
-						right: 10%;
+						left: 76%;
 					}
 				}
 			}
