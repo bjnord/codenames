@@ -9,31 +9,13 @@
 }
 
 #setup-words {
-	position: relative;
-
-	.title {
-		position: absolute;
-		top: -10px;
-		border-radius: 6px;
-		background-color: #ccc;
-		padding: 0 6px;
-	}
 	input[type=hidden] {
 		display: none;
 	}
 }
 
 #setup-whos {
-	position: relative;
-	height: 20px;
-
-	.title {
-		position: absolute;
-		top: -10px;
-		border-radius: 6px;
-		background-color: #ccc;
-		padding: 0 6px;
-	}
+	height: 25px;
 }
 
 .game-grid {

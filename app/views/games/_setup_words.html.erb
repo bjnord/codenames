@@ -1,5 +1,5 @@
+<div class="tip-top">Enter the words for this game</div>
 <div id="setup-words">
-	<div class="title">Enter the words for this game:</div>
 	<%= form_with url: set_word_game_path(@game, format: :js), remote: true, html: { autocomplete: 'off' } do |f| %>
 		<div class="form-group">
 			<label for="word"></label>
