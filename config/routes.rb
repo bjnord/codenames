@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     member do
       post 'set_word', to: 'games#set_word', as: 'set_word'
       post 'set_who', to: 'games#set_who', as: 'set_who'
+      post 'reveal', to: 'games#reveal', as: 'reveal'
     end
   end
 end

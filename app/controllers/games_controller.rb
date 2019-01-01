@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token, if: -> { request.format.js? }
-  before_action :set_game, only: [:show, :set_word, :set_who]
-  before_action :authorize_update, only: [:set_word, :set_who]
+  before_action :set_game, only: [:show, :set_word, :set_who, :reveal]
+  before_action :authorize_update, only: [:set_word, :set_who, :reveal]
   respond_to :html, :js
 
   def index
@@ -51,6 +51,25 @@ class GamesController < ApplicationController
       respond_to do |format|
         format.html { render :show }  # TODO
         format.js   { render :set_who }
+      end
+    else
+      respond_to do |format|
+        format.html { render :show }  # TODO
+        format.js   { render status: :unprocessable_entity, js: @game_word.errors.full_messages.to_sentence, content_type: 'text/plain' }
+      end
+    end
+  end
+
+  def reveal
+    pos_i = params[:position] ? params[:position].to_i : nil
+    unless (@game_word = @game.word_at(pos_i)).persisted?
+      render status: :unprocessable_entity, js: 'Word not found', content_type: 'text/plain' and return
+    end
+    @game_word.revealed = true
+    if @game_word.save
+      respond_to do |format|
+        format.html { render :show }  # TODO
+        format.js   { render :reveal }
       end
     else
       respond_to do |format|

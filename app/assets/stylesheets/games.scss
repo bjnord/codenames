@@ -15,7 +15,11 @@
 }
 
 #setup-whos {
-	height: 25px;
+	height: 24px;
+}
+
+#manage-game {
+	height: 24px;
 }
 
 .game-grid {
@@ -48,6 +52,14 @@
 			padding: 0;
 			font-size: 120%;
 
+			&.unrevealed {
+				cursor: pointer;
+			}
+			.revealed-check {
+				position: absolute;
+				top: -7px;
+				left: 0;
+			}
 			.color-setters {
 				position: absolute;
 				top: 0;

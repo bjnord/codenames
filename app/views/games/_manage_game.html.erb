@@ -1,1 +1,43 @@
+<div class="tip-top">Click a word to reveal it to everyone</div>
+<div id="manage-game">
+</div>
 <%= render partial: 'game_grid' %>
+<script>
+  $(document).ready(function () {
+    set_reveal_handlers();
+  });
+
+  function set_reveal_handlers()
+  {
+    $(".cell").off('click');
+    $(".cell.unrevealed").click(function (event) {
+      var position = $(this).attr("data-cell-id");
+      $('#modal-confirm-text').html("Reveal this word to everyone?");
+      $('#modal-confirm-yes').off('click').click(function (event) {
+        $('#modal-confirm').modal('hide');
+        handle_reveal(position);
+      });
+      $('#modal-confirm').modal();
+    });
+  }
+
+  function handle_reveal(position)
+  {
+    $.ajax({
+      method: "POST",
+      url: "<%= reveal_game_url(@game, format: :js) %>",
+      data: { position: position }
+    })
+    .done(function (data) {
+      eval(data);
+    })
+    .fail(function (xhr) {
+      $('#modal-error-title').html("Error revealing word");
+      $('#modal-error-text').html(xhr.responseText);
+      $('#modal-error').on('shown.bs.modal', function (event) {
+        $("#modal-error .modal-footer button").focus();
+      }).modal();
+    });
+  }
+</script>
+<%= render "shared/modal_confirm" %>

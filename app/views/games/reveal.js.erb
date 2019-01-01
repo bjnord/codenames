@@ -1,0 +1,2 @@
+$("#grid-cell-<%= @game_word.position %>").replaceWith("<%= j render partial: 'grid_cell', locals: { game_word: @game_word } %>");
+set_reveal_handlers();

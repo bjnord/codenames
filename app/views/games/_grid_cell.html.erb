@@ -1,4 +1,4 @@
-<div id="grid-cell-<%= game_word.position %>" class="cell <%= protected_who(game_word, session) %>" data-cell-id="<%= game_word.position %>">
+<div id="grid-cell-<%= game_word.position %>" class="cell <%= protected_who_classes(game_word, session) %>" data-cell-id="<%= game_word.position %>">
 	<% if defined?(color_setters) && color_setters %>
 		<div class="color-setters">
 			<div class="setter blue" data-who="blue">&nbsp;</div>
@@ -7,6 +7,9 @@
 			<div class="setter assassin" data-who="assassin">&nbsp;</div>
 		</div>
 	<% else %>
+		<% if game_word.revealed? %>
+			<div class="revealed-check"><%= fa_icon 'check' %></div>
+		<% end %>
 		<%= game_word.word %>
 	<% end %>
 </div>
