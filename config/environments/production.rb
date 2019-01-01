@@ -43,8 +43,12 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
-  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  # config.action_cable.url = 'wss://codenames.nordist.net/cable'
+  # NOTE no trailing slashes on these URLs! -->
+  config.action_cable.allowed_request_origins = [ 'https://codenames.nordist.net', 'http://codenames.nordist.net' ]
+
+  # Make _url helpers use https:// paths
+  config.action_controller.default_url_options = { host: 'codenames.nordist.net', protocol: 'https' }
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
