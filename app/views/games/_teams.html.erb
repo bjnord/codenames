@@ -1,0 +1,19 @@
+<div id="team-section">
+	<div class="teams">
+		<div class="team blue">
+			<% blue_left = @game.unrevealed_for('blue') %>
+			Blue Team: <%= blue_left %> left
+			<% if blue_left < 1 %>
+				<%= fa_icon 'flag-checkered' %>
+			<% end %>
+		</div>
+		<div class="team red">
+			<% red_left = @game.unrevealed_for('red') %>
+			<% if red_left < 1 %>
+				<%= fa_icon 'flag-checkered' %>
+			<% end %>
+			Red Team: <%= red_left %> left
+		</div>
+	</div>
+	<div style="clear: left;"></div>
+</div>

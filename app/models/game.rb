@@ -44,4 +44,10 @@ class Game < ApplicationRecord
       nil
     end
   end
+
+  def unrevealed_for(who)
+    tally = Hash.new(0)
+    self.game_words.collect{|gw| gw.revealed? ? 'nil' : gw.who }.each{|who| tally[who] += 1 }
+    tally[who]
+  end
 end

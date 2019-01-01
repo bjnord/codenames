@@ -18,6 +18,37 @@
 	height: 24px;
 }
 
+.teams {
+	.team {
+		display: inline-block;
+		height: 3em;
+		line-height: 2.8em;
+		overflow: hidden;
+		padding: 0 1em;
+		margin-bottom: 2em;
+		border: 1px dotted #eee;
+
+		&.red {
+			background-color: red;
+			color: white;
+			float: right;
+
+			i {
+				margin-right: 2em;
+			}
+		}
+		&.blue {
+			background-color: blue;
+			color: white;
+			float: left;
+
+			i {
+				margin-left: 2em;
+			}
+		}
+	}
+}
+
 .game-grid {
 	border: 1px dotted #eee;
 	display: flex;
