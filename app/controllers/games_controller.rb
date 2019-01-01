@@ -32,7 +32,7 @@ class GamesController < ApplicationController
   end
 
   def set_word
-    if !(pos = params[:position] || @game.next_position)
+    if (pos = params[:position] || @game.next_position).blank?
       # need to provide params[:position] in this case
       render status: :unprocessable_entity, js: 'All words entered', content_type: 'text/plain' and return
     end
@@ -53,7 +53,7 @@ class GamesController < ApplicationController
   end
 
   def set_who
-    pos_i = params[:position] ? params[:position].to_i : nil
+    pos_i = params[:position].present? ? params[:position].to_i : nil
     unless (@game_word = @game.word_at(pos_i)).persisted?
       render status: :unprocessable_entity, js: 'Word not found', content_type: 'text/plain' and return
     end
@@ -72,7 +72,7 @@ class GamesController < ApplicationController
   end
 
   def reveal
-    pos_i = params[:position] ? params[:position].to_i : nil
+    pos_i = params[:position].present? ? params[:position].to_i : nil
     unless (@game_word = @game.word_at(pos_i)).persisted?
       render status: :unprocessable_entity, js: 'Word not found', content_type: 'text/plain' and return
     end
