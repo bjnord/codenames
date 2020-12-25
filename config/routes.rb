@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post 'reveal', to: 'games#reveal', as: 'reveal'
     end
   end
+  resources :pins, only: [:index, :create];
   get '/about', to: 'pages#about', as: 'about'
   get '/contact', to: 'pages#contact', as: 'contact'
 end

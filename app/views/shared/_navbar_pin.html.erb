@@ -1,0 +1,4 @@
+<li class="nav-item">
+	<%= link_to t(:pin), pins_path(format: :js), method: :get, remote: true, class: 'nav-link' %>
+</li>
+<%= render partial: 'pins/modal_pin' %>

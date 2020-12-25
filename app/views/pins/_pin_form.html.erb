@@ -1,0 +1,6 @@
+<% if @game %>
+  <div class="spymaster-pin">
+    <p>Give this PIN to the other spymaster for "<%= @game.name %>":</p>
+    <div class="dashed-pin"><%= @game.dashed_pin %></div>
+  </div>
+<% end %>

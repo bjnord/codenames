@@ -4,6 +4,8 @@ class Game < ApplicationRecord
   validates :sessionid, :name, presence: true
   validates :name, uniqueness: true, if: ->(o) { o.name.present? }
 
+  before_create :create_pin
+
   WIDTH = 5
   N_WORDS = WIDTH * WIDTH
 
@@ -49,5 +51,15 @@ class Game < ApplicationRecord
     tally = Hash.new(0)
     self.game_words.collect{|gw| gw.revealed? ? 'nil' : gw.who }.each{|who| tally[who] += 1 }
     tally[who]
+  end
+
+  def dashed_pin
+    "#{self.pin[0..2]}-#{self.pin[3..-1]}"
+  end
+
+protected
+
+  def create_pin
+    self.pin = Random.rand(1_000_000).to_s.rjust(6, '0')
   end
 end
