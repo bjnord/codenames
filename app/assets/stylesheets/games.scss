@@ -31,6 +31,7 @@
 		&.red {
 			background-color: red;
 			color: white;
+			text-decoration: underline solid white;
 			float: right;
 
 			i {
@@ -40,6 +41,7 @@
 		&.blue {
 			background-color: blue;
 			color: white;
+			text-decoration: underline dotted white;
 			float: left;
 
 			i {
@@ -132,10 +134,18 @@
 	.red {
 		background-color: red;
 		color: white;
+		text-decoration: underline solid white;
+		&.revealed {
+			background-color: #ff8080;
+		}
 	}
 	.blue {
 		background-color: blue;
 		color: white;
+		text-decoration: underline dotted white;
+		&.revealed {
+			background-color: #8080ff;
+		}
 	}
 	.bystander {
 		background-color: #D0D0C1;
@@ -145,4 +155,8 @@
 		background-color: black;
 		color: white;
 	}
+}
+
+.revealed-word {
+	text-decoration: line-through;
 }
