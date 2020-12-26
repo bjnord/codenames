@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+exec('/usr/bin/env', 'bin/rails', 'runner', File.expand_path($0), *ARGV) unless defined?(Rails)
+
+if ARGV[0].blank?
+  $stderr.puts "Usage: load-deck <file>"
+  exit 64
+end
+
+DeckWord.destroy_all
+File.readlines(ARGV[0]).each do |line|
+  DeckWord.create(word: line.strip.upcase)
+end

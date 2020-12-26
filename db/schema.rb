@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_26_000806) do
+ActiveRecord::Schema.define(version: 2020_12_26_131840) do
+
+  create_table "deck_words", force: :cascade do |t|
+    t.string "word", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "game_words", force: :cascade do |t|
     t.integer "game_id", default: 0, null: false
