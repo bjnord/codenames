@@ -10,6 +10,15 @@
 				<small id="game_name_help" class="form-text text-muted"><%= t(:game_name_help) %></small>
 			</div>
 			<div class="form-group">
+				Who will start the game?
+				&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label :starts, 'Random' %>
+				<%= f.radio_button :starts, 'random', :checked => true %>
+				&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label :starts, 'Blue' %>
+				<%= f.radio_button :starts, 'blue' %>
+				&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label :starts, 'Red' %>
+				<%= f.radio_button :starts, 'red' %>
+			</div>
+			<div class="form-group">
 				<%= f.submit class: 'btn btn-success' %>
 			</div>
 		</div>

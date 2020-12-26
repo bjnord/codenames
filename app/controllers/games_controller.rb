@@ -100,7 +100,7 @@ class GamesController < ApplicationController
 private
 
   def strong_params
-    params.require(:game).permit(:name)
+    params.require(:game).permit(:name, :starts)
   end
 
   def set_game

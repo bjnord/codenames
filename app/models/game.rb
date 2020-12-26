@@ -7,6 +7,8 @@ class Game < ApplicationRecord
 
   before_create :create_pin
 
+  attr_accessor :starts
+
   WIDTH = 5
   N_WORDS = WIDTH * WIDTH
 
@@ -97,7 +99,11 @@ class Game < ApplicationRecord
       bystander bystander bystander blue blue red red blue blue red red
       assassin bystander
     }
-    whos << 'blue'  # FIXME take arg or do coin flip
+    if self.starts != 'blue' && self.starts != 'red'
+      self.starts = ['blue', 'red'][Random.rand(2)]
+      Rails.logger.error "coin toss for game #{self.id} #{self.name}: #{self.starts} starts"
+    end
+    whos << self.starts
     while words.present?
       i = Random.rand(words.count)
       if words[i].update(who: whos.shift)
