@@ -1,7 +1,8 @@
 class Game < ApplicationRecord
   has_many :game_words, dependent: :destroy
+  has_many :spymasters, dependent: :destroy
 
-  validates :sessionid, :name, presence: true
+  validates :name, presence: true
   validates :name, uniqueness: true, if: ->(o) { o.name.present? }
 
   before_create :create_pin
@@ -10,7 +11,7 @@ class Game < ApplicationRecord
   N_WORDS = WIDTH * WIDTH
 
   def spymaster?(session)
-    self.sessionid == session.id
+    self.spymasters.where(sessionid: session.id).present?
   end
 
   def has_words?

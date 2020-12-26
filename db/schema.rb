@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_163035) do
+ActiveRecord::Schema.define(version: 2020_12_26_000806) do
 
   create_table "game_words", force: :cascade do |t|
     t.integer "game_id", default: 0, null: false
@@ -24,13 +24,18 @@ ActiveRecord::Schema.define(version: 2020_12_25_163035) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string "sessionid", default: "", null: false
     t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "pin"
     t.index ["name"], name: "index_games_on_name", unique: true
-    t.index ["sessionid"], name: "index_games_on_sessionid"
+  end
+
+  create_table "spymasters", force: :cascade do |t|
+    t.integer "game_id", default: 0, null: false
+    t.string "sessionid", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

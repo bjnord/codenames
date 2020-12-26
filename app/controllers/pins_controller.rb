@@ -3,8 +3,7 @@ class PinsController < ApplicationController
   respond_to :html, :js
 
   def index
-    # FIXME make this a ".spymaster" scope
-    @game = Game.order(created_at: :desc).where(sessionid: session.id).first
+    @game = Game.order(created_at: :desc).joins(:spymasters).where('spymasters.sessionid = ?', session.id).first
   end
 
   def create

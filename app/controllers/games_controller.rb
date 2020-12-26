@@ -16,7 +16,9 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create(strong_params.merge(sessionid: session.id))
+    @game = Game.new(strong_params)
+    @game.spymasters.build(sessionid: session.id)
+    @game.save
     respond_with @game
   end
 
