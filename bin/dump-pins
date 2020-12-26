@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+exec('/usr/bin/env', 'bin/rails', 'runner', File.expand_path($0), *ARGV) unless defined?(Rails)
+
+Game.order(:created_at).where('created_at > ?', 1.day.ago).each do |game|
+  puts "#{game.id.to_s.rjust(5, ' ')}. #{game.name}  PIN #{game.dashed_pin}"
+end
