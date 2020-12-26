@@ -43,3 +43,6 @@ en:
   one_assassin_required: "There must be exactly one assassin (black)"
   only_spymaster_can_update: "Only the spymaster can update the game"
   pin: "PIN"
+  helpers:
+    label:
+      game_pin: 'To enter game as a spymaster, enter its PIN here:'
