@@ -100,7 +100,7 @@ private
   end
 
   def set_game
-    @game = Game.includes(:game_words).find(params[:id])
+    @game = Game.includes(:game_words, :spymasters).find(params[:id])
   end
 
   def authorize_update
