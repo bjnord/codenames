@@ -58,6 +58,33 @@ class Game < ApplicationRecord
     "#{self.pin[0..2]}-#{self.pin[3..-1]}"
   end
 
+  def pick_words_from_deck
+    deck_count = DeckWord.count
+    (0..N_WORDS-1).each do |pos|
+      if deck_count < 1
+        Rails.logger.warning "deck exhausted for game #{game.id} #{game.name}"
+        return false
+      end
+      # TODO is there a more efficient way to get word at position?
+      deck_i = rand(deck_count) + 1
+      unless dw = DeckWord.limit(deck_i).last
+        Rails.logger.error "unable to get deck word #{deck_i}/#{deck_count}"
+        return false
+      end
+      dw.destroy
+      if dw.persisted?
+        raise "DeckWord #{dw.id} #{dw.word} still persisted after destroy"
+      end
+      gw = self.game_words.build(word: dw.word, position: pos)
+      if !gw.save
+        Rails.logger.error "error saving deck word #{gw.word}: #{gw.errors.inspect}"
+        return false
+      end
+      deck_count -= 1
+    end
+    true
+  end
+
 protected
 
   def create_pin
