@@ -16,11 +16,12 @@ RSpec.describe Game, type: :model do
   end
 
   context "without a name" do
-    let(:game) { build(:game, name: nil) }
+    let(:game) { build(:game, name: "") }
 
     it "should not be valid" do
-      expect(game).not_to be_valid
+      expect(game.save).to be_falsey
       expect(game.errors.added?(:name, :blank)).to be_truthy
+      expect(game.errors.added?(:name, :taken, value: "")).not_to be_truthy
     end
   end
 
@@ -29,11 +30,9 @@ RSpec.describe Game, type: :model do
     let(:game2) { build(:game, name: game.name) }
 
     it "should not be valid" do
-      expect(game2).not_to be_valid
-# FIXME not working for some reason
-#       - see <https://github.com/rails/rails/issues/33023>
-#       - and <https://github.com/rails/rails/pull/31117>
-#     expect(game2.errors.added?(:name, :taken)).to be_truthy
+      expect(game2.save).to be_falsey
+      expect(game2.errors.added?(:name, :blank)).not_to be_truthy
+      expect(game2.errors.added?(:name, :taken, value: game.name)).to be_truthy
     end
   end
 
