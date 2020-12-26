@@ -19,7 +19,9 @@ class GamesController < ApplicationController
     @game = Game.new(strong_params)
     @game.spymasters.build(sessionid: session.id)
     if @game.save
-      @game.pick_words_from_deck
+      if @game.pick_words_from_deck
+        @game.set_whos
+      end
     end
     respond_with @game
   end

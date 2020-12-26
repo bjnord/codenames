@@ -85,6 +85,30 @@ class Game < ApplicationRecord
     true
   end
 
+  def set_whos
+    word_count = self.game_words.count
+    if word_count < N_WORDS
+        Rails.logger.warning "must have #{N_WORDS} words for game #{game.id} #{game.name}"
+        return false
+    end
+    words = self.game_words.to_a
+    whos = %w{
+      assassin bystander bystander bystander bystander bystander bystander bystander
+      red red red red red red red red blue blue blue blue blue blue blue blue
+    }
+    whos << 'blue'  # FIXME take arg or do coin flip
+    while words.present?
+      i = rand(words.count)
+      if words[i].update(who: whos.shift)
+        words.delete_at(i)
+      else
+        Rails.logger.error "error updating who for word #{words[i].id}: #{words[i].errors.inspect}"
+        return false
+      end
+    end
+    true
+  end
+
 protected
 
   def create_pin
