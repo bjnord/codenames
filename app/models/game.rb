@@ -93,8 +93,9 @@ class Game < ApplicationRecord
     end
     words = self.game_words.to_a
     whos = %w{
-      assassin bystander bystander bystander bystander bystander bystander bystander
-      red red red red red red red red blue blue blue blue blue blue blue blue
+      bystander bystander bystander red red blue blue red red blue blue
+      bystander bystander bystander blue blue red red blue blue red red
+      assassin bystander
     }
     whos << 'blue'  # FIXME take arg or do coin flip
     while words.present?
