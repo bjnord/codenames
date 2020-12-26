@@ -66,7 +66,7 @@ class Game < ApplicationRecord
         return false
       end
       # TODO is there a more efficient way to get word at position?
-      deck_i = rand(deck_count) + 1
+      deck_i = Random.rand(deck_count) + 1
       unless dw = DeckWord.limit(deck_i).last
         Rails.logger.error "unable to get deck word #{deck_i}/#{deck_count}"
         return false
@@ -98,7 +98,7 @@ class Game < ApplicationRecord
     }
     whos << 'blue'  # FIXME take arg or do coin flip
     while words.present?
-      i = rand(words.count)
+      i = Random.rand(words.count)
       if words[i].update(who: whos.shift)
         words.delete_at(i)
       else
