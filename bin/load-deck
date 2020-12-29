@@ -8,6 +8,7 @@ end
 
 DeckWord.destroy_all
 File.readlines(ARGV[0]).each do |line|
-  side, word = line.match(%r{(\w):(\w+)}).captures;
+  line.strip!
+  side, word = line.match(%r{(\w):(.+)}).captures;
   DeckWord.create(word: word.strip.upcase)
 end
