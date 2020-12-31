@@ -11,7 +11,7 @@ class PinsController < ApplicationController
 
   def create
     game_pin = params[:game_pin].gsub(/\D/, '')
-    if @game = Game.find_by(pin: game_pin)
+    if @game = Game.recent.find_by(pin: game_pin)
       @spymaster = @game.spymasters.build(sessionid: session.id)
       if @spymaster.save
         respond_to do |format|

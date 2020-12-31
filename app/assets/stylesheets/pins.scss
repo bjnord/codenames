@@ -1,7 +1,7 @@
 .spymaster-pin {
   text-align: center;
 
-  .dashed-pin {
+  .pin {
     margin: 0 auto;
     border: 1px solid;
     font-size: 120%;
@@ -10,9 +10,6 @@
 }
 
 .spymaster-login {
-  .hint {
-    font-style: italic;
-  }
   input {
     margin-top: 1em;
   }

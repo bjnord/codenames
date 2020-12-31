@@ -9,6 +9,9 @@ class Game < ApplicationRecord
 
   attr_accessor :starts
 
+  PIN_DAYS = 7
+  scope :recent, -> { where('created_at > ?', Game::PIN_DAYS.days.ago) }
+
   WIDTH = 5
   N_WORDS = WIDTH * WIDTH
 
@@ -54,10 +57,6 @@ class Game < ApplicationRecord
     tally = Hash.new(0)
     self.game_words.collect{|gw| gw.revealed? ? 'nil' : gw.who }.each{|who| tally[who] += 1 }
     tally[who]
-  end
-
-  def dashed_pin
-    "#{self.pin[0..2]}-#{self.pin[3..-1]}"
   end
 
   def pick_words_from_deck
@@ -119,6 +118,9 @@ class Game < ApplicationRecord
 protected
 
   def create_pin
-    self.pin = Random.rand(1_000_000).to_s.rjust(6, '0')
+    loop do
+      self.pin = Random.rand(10_000).to_s.rjust(4, '0')
+      break if Game.recent.where(pin: self.pin).count == 0
+    end
   end
 end

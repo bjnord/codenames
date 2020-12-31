@@ -1,15 +1,14 @@
 <% if @game && @game.spymaster?(session) %>
   <div class="spymaster-pin">
     <p>Give this PIN to the other spymaster for "<%= @game.name %>":</p>
-    <div class="dashed-pin"><%= @game.dashed_pin %></div>
+    <div class="pin"><%= @game.pin %></div>
   </div>
 <% else %>
   <div class="spymaster-login">
     <%= form_with url: pins_path, method: :post do |f| %>
       <div class="form-group">
         <%= f.label :game_pin %>
-        <span class="hint">(you can skip the dashes if you want)
-        <%= f.text_field :game_pin, size: 20, class: 'form-control', placeholder: "NNN-NNN", autofocus: true %>
+        <%= f.text_field :game_pin, size: 20, class: 'form-control', placeholder: "NNNN", autofocus: true %>
       </div>
       <div class="form-group">
         <%= f.submit class: 'btn btn-success' %>
