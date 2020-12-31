@@ -15,6 +15,7 @@
   <body>
     <%= render partial: 'shared/navbar' %>
     <div id="content" class="container-fluid">
+      <%= render 'shared/flash' %>
       <%= yield %>
     </div>
     <%= render partial: 'shared/modal_error' %>

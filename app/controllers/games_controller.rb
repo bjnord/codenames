@@ -6,6 +6,7 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.where('created_at > ?', Time.now - 2.days).order(created_at: :desc)
+    flash.keep if request.format.js?  # JS-to-HTML redirect (see JS view)
   end
 
   def show

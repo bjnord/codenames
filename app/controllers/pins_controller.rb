@@ -20,7 +20,6 @@ class PinsController < ApplicationController
         end
       else
         Rails.logger.error "spymaster save failed: #{@spymaster.errors.inspect}"
-        # FIXME this alert is getting lost
         flash.alert = 'Unable to update database with new spymaster'
         respond_to do |format|
           format.html { redirect_to root_url }
@@ -29,7 +28,6 @@ class PinsController < ApplicationController
       end
     else
       Rails.logger.error "game not found for PIN: #{game_pin}"
-      # FIXME this alert is getting lost
       flash.alert = 'Invalid PIN'
       respond_to do |format|
         format.html { redirect_to root_url }
