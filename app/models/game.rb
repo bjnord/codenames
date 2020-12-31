@@ -101,7 +101,7 @@ class Game < ApplicationRecord
     }
     if self.starts != 'blue' && self.starts != 'red'
       self.starts = ['blue', 'red'][Random.rand(2)]
-      Rails.logger.error "coin toss for game #{self.id} #{self.name}: #{self.starts} starts"
+      Rails.logger.debug "coin toss for game #{self.id} #{self.name}: #{self.starts} starts"
     end
     whos << self.starts
     while words.present?
