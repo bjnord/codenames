@@ -16,7 +16,7 @@ Thanks to my nephew Mark for the idea of using the TV, and to my son Doug for de
 
 ## Copyright
 
-This companion app is Copyright © 2018-2019 Brent J. Nordquist.
+This companion app is Copyright © 2018-2021 Brent J. Nordquist.
 
 ## Legal Disclaimer
 
