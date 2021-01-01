@@ -8,7 +8,7 @@
     <%= form_with url: pins_path, method: :post do |f| %>
       <div class="form-group">
         <%= f.label :game_pin %>
-        <%= f.text_field :game_pin, size: 20, class: 'form-control', placeholder: "NNNN", autofocus: true %>
+        <%= f.text_field :game_pin, size: 20, class: 'form-control', placeholder: "NNNN" %>
       </div>
       <div class="form-group">
         <%= f.submit class: 'btn btn-success' %>

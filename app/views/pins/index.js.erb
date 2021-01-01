@@ -1,2 +1,5 @@
 $("#modal-pin .modal-body").html("<%= j render partial: 'pin_form', locals: { game_pin: @game_pin } %>");
+$('#modal-pin').on('shown.bs.modal', function () {
+    $('#game_pin').focus();
+});
 $("#modal-pin").modal();
